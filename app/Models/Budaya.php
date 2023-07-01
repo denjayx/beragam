@@ -10,4 +10,9 @@ class Budaya extends Model
     use HasFactory;
     protected $table = 'budaya';
     protected $fillable = ['nama', 'foroUrl', 'deskripsi', 'provID', 'katID'];
+
+    public function provinsi()
+    {
+        return $this->belongsTo(Provinsi::class);
+    }
 }

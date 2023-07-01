@@ -10,4 +10,9 @@ class Admin extends Model
     use HasFactory;
     protected $table = 'admin';
     protected $fillable = ['nama', 'email', 'password', 'noHp'];
+
+    public function artikel()
+    {
+        return $this->hasMany(Artikel::class);
+    }
 }
