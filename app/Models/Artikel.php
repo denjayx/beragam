@@ -9,7 +9,7 @@ class Artikel extends Model
 {
     use HasFactory;
     protected $table = 'artikel';
-    protected $fillable = ['judul', 'tanggal', 'penulis', 'foto_url', 'isi', 'adminID'];
+    protected $fillable = ['judul', 'tanggal', 'penulis', 'foto_url', 'isi', 'admin_id'];
 
     public function Admin()
     {

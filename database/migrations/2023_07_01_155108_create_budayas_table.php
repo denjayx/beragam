@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->foreignId('prov_id')->references('id')->on('provinsi');
             $table->foreignId('kat_id')->references('id')->on('kategori');
+            $table->timestamps();
         });
     }
 

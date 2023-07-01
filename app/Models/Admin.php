@@ -9,7 +9,7 @@ class Admin extends Model
 {
     use HasFactory;
     protected $table = 'admin';
-    protected $fillable = ['nama', 'email', 'password', 'noHp'];
+    protected $fillable = ['nama', 'email', 'password', 'no_hp'];
 
     public function artikel()
     {

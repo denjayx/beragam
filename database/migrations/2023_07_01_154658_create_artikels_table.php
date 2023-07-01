@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->timestamp('tanggal');
-            $table->string('penulis');
+            $table->text('foto_url');
             $table->text('isi');
-            $table->foreignId('adminID')->references('id')->on('admin');
+            $table->foreignId('admin_id')->references('id')->on('admin');
+            $table->timestamps();
         });
     }
 
