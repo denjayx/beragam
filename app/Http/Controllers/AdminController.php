@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Culture;
 use Illuminate\Http\Request;
 
-class ProvinceController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin/province/index');
+        return view('admin/index');
     }
 
     /**
@@ -34,7 +33,7 @@ class ProvinceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Culture $culture)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +41,7 @@ class ProvinceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Culture $culture)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +49,7 @@ class ProvinceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Culture $culture)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +57,7 @@ class ProvinceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Culture $culture)
+    public function destroy(string $id)
     {
         //
     }
