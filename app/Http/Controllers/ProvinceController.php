@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Culture;
+use App\Models\Province;
 use Illuminate\Http\Request;
 
 class ProvinceController extends Controller
@@ -12,7 +13,9 @@ class ProvinceController extends Controller
      */
     public function index()
     {
-        return view('admin/province/index');
+        // dd();
+        $provinces = Province::All();
+        return view('admin/province/index', compact('provinces'));
     }
 
     /**
@@ -20,7 +23,7 @@ class ProvinceController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.province.create');
     }
 
     /**
@@ -28,7 +31,15 @@ class ProvinceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|min:3',
+            'foto_url' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'deskripsi' => 'required|min:30',
+        ]);
+        $foto_url = $request->file('foto_url');
+        $foto_url->storeAs('province', $foto_url->hashName());
+        Province::create($validated);
+        return redirect()->route('admin.province.index');
     }
 
     /**

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Province extends Model
 {
     use HasFactory;
+    protected $table = 'provinces';
+    protected $fillable = ['nama', 'foto_url', 'deskripsi'];
+
+    public function cultures()
+    {
+        return $this->hasMany(Culture::class);
+    }
 }
