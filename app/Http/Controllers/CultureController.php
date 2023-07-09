@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Culture;
+use App\Models\Province;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CultureController extends Controller
 {
@@ -11,7 +15,8 @@ class CultureController extends Controller
      */
     public function index()
     {
-        return view('admin/culture/index');
+        $cultures = Culture::All();
+        return view('admin/province/index', compact('cultures'));
     }
 
     /**
@@ -19,7 +24,9 @@ class CultureController extends Controller
      */
     public function create()
     {
-        //
+        $provinces = Province::All();
+        $categories = Category::All();
+        return view('admin.culture.create', compact('provinces', 'categories'));
     }
 
     /**
@@ -27,7 +34,19 @@ class CultureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|min:3',
+            'foto_url' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'deskripsi' => 'required|min:20',
+            'prov_id' => 'required|exists:provinces,id',
+            'cat_id' => 'required|exists:categories,id',
+        ]);
+        $foto_url = $request->file('foto_url');
+        $foto_url->storeAs('culture', $foto_url->hashName());
+
+        $validated['foto_url'] = $foto_url->hashName();
+        Culture::create($validated);
+        return redirect()->route('admin.index');
     }
 
     /**
@@ -57,8 +76,10 @@ class CultureController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Culture $culture)
     {
-        //
+        Storage::delete('storage/culture/' . $culture->foto_url);
+        $culture->delete();
+        return redirect()->route('admin.index');
     }
 }

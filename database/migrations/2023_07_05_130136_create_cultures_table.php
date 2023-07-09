@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('cultures', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
+            $table->string('nama');
             $table->text('foto_url');
             $table->text('deskripsi');
             $table->foreignId('prov_id')->references('id')->on('provinces');

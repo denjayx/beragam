@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Culture;
+use App\Models\Province;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,7 +14,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin/index');
+        $provinces = Province::All();
+        $categories = Category::All();
+        $cultures = Culture::All();
+        return view('admin/index', compact('cultures', 'provinces', 'categories'));
     }
 
     /**

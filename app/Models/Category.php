@@ -10,4 +10,9 @@ class Category extends Model
     use HasFactory;
     protected $table = 'categories';
     protected $fillable = ['nama'];
+
+    public function cultures()
+    {
+        return $this->hasMany(Category::class);
+    }
 }
