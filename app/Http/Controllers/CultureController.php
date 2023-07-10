@@ -41,10 +41,8 @@ class CultureController extends Controller
             'prov_id' => 'required|exists:provinces,id',
             'cat_id' => 'required|exists:categories,id',
         ]);
-        $foto_url = $request->file('foto_url');
-        $foto_url->storeAs('culture', $foto_url->hashName());
-
-        $validated['foto_url'] = $foto_url->hashName();
+        $fotoUrl = Storage::putFile('public/culture', $request->file('foto_url'));
+        $validated['foto_url'] = basename($fotoUrl);
         Culture::create($validated);
         return redirect()->route('admin.index');
     }
@@ -52,9 +50,10 @@ class CultureController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $culture = Culture::find($id);
+        return view('culture.show', compact('culture'));
     }
 
     /**
