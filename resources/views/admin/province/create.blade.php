@@ -1,5 +1,5 @@
 <!-- Main modal -->
-<div id="updateProductModal" tabindex="-1" aria-hidden="true"
+<div id="defaultModal" tabindex="-1" aria-hidden="true"
     class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full pt-10 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
     <div class="relative w-full h-full max-w-2xl p-4 md:h-auto">
         <!-- Modal content -->
@@ -10,8 +10,8 @@
                 Tambah Kategori
                 </h3>
                 <button type="button"
-                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center  "
-                    data-modal-toggle="updateProductModal">
+                    class=" text-red-400 bg-red-50 hover:bg-red-200 hover:text-red-900 rounded-lg text-sm p-1.5 inline-flex"
+                    data-modal-toggle="defaultModal">
                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -19,6 +19,7 @@
                             clip-rule="evenodd"></path>
                     </svg>
                     <span class="sr-only">Close modal</span>
+                </button>
                 </button>
             </div>
             <!-- Modal body -->
@@ -29,7 +30,7 @@
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Nama
                             Provinsi</label>
                         <input name="nama" type="text" id="name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5"
                             placeholder="Cth. Yogyakarta">
                     </div>
                     <div>
@@ -46,24 +47,14 @@
                     <div class="sm:col-span-2">
                         <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900 ">Deskripsi</label>
                         <textarea id="deskripsi" name="deskripsi" rows="5"
-                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500"
                             placeholder="Tuliskan deskripsi provinsis..."></textarea>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
                     <button type="submit"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                        class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Tambah
-                    </button>
-                    <button type="button"
-                        class="text-red-600 inline-flex items-center hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-cente   ">
-                        <svg class="w-5 h-5 mr-1 -ml-1" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        Delete
                     </button>
                 </div>
             </form>

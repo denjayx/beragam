@@ -37,10 +37,8 @@ class ProvinceController extends Controller
             'foto_url' => 'required|image|mimes:jpeg,jpg,png,gif,svg|max:2048',
             'deskripsi' => 'required|min:30',
         ]);
-        $foto_url = $request->file('foto_url');
-        $foto_url->storeAs('province', $foto_url->hashName());
-
-        $validated['foto_url'] = $foto_url->hashName();
+        $fotoUrl = Storage::putFile('public/province', $request->file('foto_url'));
+        $validated['foto_url'] = basename($fotoUrl);
         Province::create($validated);
         return redirect()->route('admin.province.index');
     }
@@ -48,9 +46,10 @@ class ProvinceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Culture $culture)
+    public function show($id)
     {
-        //
+        $province = Province::find($id);
+        return view('province.show', compact('province'));
     }
 
     /**
