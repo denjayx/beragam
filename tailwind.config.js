@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: ['"Poppins"', ...defaultTheme.fontFamily.sans], monstserrat: ['"Monstserrat"', ...defaultTheme.fontFamily.sans]
+      }
+    },
   },
   plugins: [],
 }
