@@ -15,7 +15,7 @@ class ProvinceController extends Controller
     public function index()
     {
         // dd();
-        $provinces = Province::All();
+        $provinces = Province::orderBy('nama', 'asc')->paginate(5);
         return view('admin/province/index', compact('provinces'));
     }
 
@@ -63,9 +63,25 @@ class ProvinceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Culture $culture)
+    public function update(Request $request, Province $province)
     {
-        //
+        if ($request->hasFile('foto_url')) {
+            $validated = $request->validated();
+
+            $fotoUrl = Storage::putFile('public/province', $request->file('foto_url'));
+            $validated['foto_url'] = basename($fotoUrl);
+
+            Storage::delete('public/province/' . $province->foto_url);
+            $province->update($validated);
+        } else {
+            $province->update(
+                [
+                    'nama' => $request->nama,
+                    'deskripsi' => $request->deskripsi,
+                ]
+            );
+        }
+        return redirect()->route('admin.province.index');
     }
 
     /**

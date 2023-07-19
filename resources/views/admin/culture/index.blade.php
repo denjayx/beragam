@@ -46,7 +46,11 @@
 
                     </div>
                 </div>
-
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                @endif
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left text-gray-500 ">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
@@ -71,7 +75,6 @@
                                     </th>
                                     <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">
                                         <a href="">
-
                                             <span>{{ $culture->provinces->nama }}</span>
                                         </a>
                                     </th>
@@ -84,29 +87,32 @@
                                     <td scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">
                                         {{ Str::limit($culture->deskripsi, 30) }}
                                     </td>
-                                    <form action="{{ route('admin.culture.destroy', $culture->id) }}" method="POST">
-                                        @csrf
-                                        <td>
-                                            <div class="flex items-center justify-end w-full gap-1 px-4 py-3">
-                                                <button type="button" id="readProductButton"
-                                                    data-modal-toggle="readProductModal{{ $culture->id }}"
-                                                    class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                                    Lihat
-                                                </button>
-                                                @include('admin.culture.show')
-                                                <button type="button"
-                                                    class="text-white inline-flex items-center bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
-                                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z">
-                                                        </path>
-                                                        <path fill-rule="evenodd"
-                                                            d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span class="hidden">Edit</span>
-                                                </button>
+                                    <td>
+                                        <div class="flex items-center justify-end w-full gap-1 px-4 py-3">
+                                            <button type="button" id="readProductButton"
+                                                data-modal-toggle="readProductModal{{ $culture->id }}"
+                                                class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                                Lihat
+                                            </button>
+                                            @include('admin.culture.show')
+                                            <button type="button" id="updateProductButton"
+                                                data-modal-toggle="updateProductModal{{ $culture->id }}"
+                                                class="text-white inline-flex items-center bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
+                                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z">
+                                                    </path>
+                                                    <path fill-rule="evenodd"
+                                                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                                        clip-rule="evenodd"></path>
+                                                </svg>
+                                                <span class="hidden">Edit</span>
+                                            </button>
+                                            @include('admin.culture.edit')
+                                            <form action="{{ route('admin.culture.destroy', $culture->id) }}"
+                                                method="POST">
+                                                @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
                                                     class="inline-flex items-center text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
@@ -118,9 +124,9 @@
                                                     </svg>
                                                     <span class="hidden">Hapus</span>
                                                 </button>
-                                            </div>
-                                        </td>
-                                    </form>
+                                            </form>
+                                        </div>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>

@@ -15,4 +15,8 @@ class Province extends Model
     {
         return $this->hasMany(Culture::class);
     }
+    public function links()
+    {
+        return $this->paginate(5);
+    }
 }

@@ -55,9 +55,13 @@ class CategoryContoller extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|min:3'
+        ]);
+        $category->update($validated);
+        return redirect()->route('admin.category.index');
     }
 
     /**

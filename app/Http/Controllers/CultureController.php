@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateCultureRequest;
 use App\Models\Category;
 use App\Models\Culture;
 use App\Models\Province;
@@ -64,14 +65,29 @@ class CultureController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(UpdateCultureRequest $request, Culture $culture)
     {
-        //
-    }
+        if ($request->hasFile('foto_url')) {
+            $validated = $request->validated();
 
+            $fotoUrl = Storage::putFile('public/culture', $request->file('foto_url'));
+            $validated['foto_url'] = basename($fotoUrl);
+
+            Storage::delete('public/culture/' . $culture->foto_url);
+            $culture->update($validated);
+        } else {
+            $culture->update(
+                [
+                    'nama' => $request->nama,
+                    'deskripsi' => $request->deskripsi,
+                    'prov_id' => $request->prov_id,
+                    'cat_id' => $request->cat_id,
+                ]
+            );
+        }
+
+        return redirect()->route('admin.index');
+    }
     /**
      * Remove the specified resource from storage.
      */

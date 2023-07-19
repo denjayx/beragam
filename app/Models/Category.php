@@ -11,8 +11,8 @@ class Category extends Model
     protected $table = 'categories';
     protected $fillable = ['nama'];
 
-    public function cultures()
-    {
-        return $this->hasMany(Category::class);
-    }
+    // public function cultures()
+    // {
+    //     return $this->hasMany(Category::class);
+    // }
 }
