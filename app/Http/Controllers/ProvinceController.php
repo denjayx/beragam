@@ -14,7 +14,6 @@ class ProvinceController extends Controller
      */
     public function index()
     {
-        // dd();
         $provinces = Province::orderBy('nama', 'asc')->paginate(5);
         return view('admin/province/index', compact('provinces'));
     }

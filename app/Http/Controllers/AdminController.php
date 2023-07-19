@@ -16,7 +16,7 @@ class AdminController extends Controller
     {
         $provinces = Province::All();
         $categories = Category::All();
-        $cultures = Culture::All();
+        $cultures = Culture::orderBy('prov_id', 'asc')->paginate(5);
         return view('admin/index', compact('cultures', 'provinces', 'categories'));
     }
 

@@ -19,4 +19,8 @@ class Culture extends Model
     {
         return $this->belongsTo(Category::class, 'cat_id', 'id');
     }
+    public function links()
+    {
+        return $this->paginate(5);
+    }
 }
