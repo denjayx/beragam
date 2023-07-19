@@ -3,13 +3,12 @@
 
 <head>
     @include('partials.head')
-    <title>Beragam | @yield('title')</title>
+    <title>Dashboard | @yield('title')</title>
 </head>
 
 <body>
     @include('partials.navbar')
     @yield('content')
-    @include('partials.footer')
 </body>
 
 </html>
