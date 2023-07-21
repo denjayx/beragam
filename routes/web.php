@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryContoller;
 use App\Http\Controllers\CultureController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProvinceController;
+use App\Models\Culture;
 use App\Models\Province;
 use Illuminate\Support\Facades\Route;
 
@@ -20,9 +21,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $cultures = Culture::paginate(6);
     $provinces = Province::orderBy('nama', 'asc')->paginate(4);
-    return view('welcome', compact('provinces'));
+    return view('welcome', compact('provinces', 'cultures'));
 });
+
+Route::get('/provinsi', function () {
+    $provinces = Province::All();
+    return view('province.show', compact('provinces'));
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
