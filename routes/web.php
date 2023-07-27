@@ -28,9 +28,20 @@ Route::get('/', function () {
 
 Route::get('/provinsi', function () {
     $provinces = Province::All();
-    return view('province.show', compact('provinces'));
-});
+    return view('province.index', compact('provinces'));
+})->name('province.index');
 
+Route::get('/provinsi/{id}', function ($id) {
+    $province = Province::findOrFail($id);
+    $cultures = Culture::where('prov_id', $id)->get();
+    return view('province.show', compact('province', 'cultures'));
+})->name('province.show');
+
+// Route::get('/provinsi/{id}', function ($id) {
+//     $province = Province::findOrFail($id);
+//     $cultures = Culture::All();
+//     return view('province.show', compact('province', 'cultures'));
+// })->name('province.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
