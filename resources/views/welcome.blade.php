@@ -22,20 +22,21 @@
         <div class="flex pb-8 overflow-x-scroll md:overflow-x-hidden gap-x-4">
             @foreach ($provinces as $province)
                 <div class="flex-shrink-0 w-full p-4 bg-white shadow-xl md:flex-shrink card rounded-3xl">
-                    <a href="">
+                    <a href="{{ route('province.show', $province->id) }}">
                         <img src="{{ asset('storage/province/' . $province->foto_url) }} "
-                            class="object-cover h-80 rounded-3xl" alt="">
+                            class="object-cover h-72 rounded-3xl" alt="">
                         <h1 class="font-bold text-3xl text-[#80B8D0] py-2 ">{{ $province->nama }}</h1>
                         <p>{{ Str::limit($province->deskripsi, 40) }}</p>
                     </a>
                 </div>
             @endforeach
         </div>
-        <a href="" class="text-[#72CF7B] font-bold text-center text-lg block underline">Lihat Semua</a>
+        <a href="{{ route('province.index') }}" class="text-[#72CF7B] font-bold text-center text-lg block underline">Lihat
+            Semua</a>
     </section>
     <section class="container px-4 mt-16">
         <h3 class="font-bold text-[#17495E] text-3xl mb-4">Artikel</h3>
-        <div class="flex gap-5 pb-8 overflow-x-scroll cards">
+        <div class="flex gap-5 pb-8 overflow-x-scroll md:overflow-x-hidden md:grid md:grid-cols-2 cards">
             <div class="flex flex-col flex-shrink-0 w-full gap-4 p-4 bg-white shadow-xl card rounded-3xl">
                 <img class="object-cover w-full h-48 rounded-3xl" src="{{ 'artikel1.png' }}" alt="">
                 <div class="flex flex-col gap-3">
@@ -46,7 +47,9 @@
                     <div class="">
                         <h3 class="text-3xl font-bold">10 Rekomendasi wisata di Indonesia</h3>
                         <p class="text-sm">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, repellat.
+                            1. Danau Toba di Sumatera Utara
+                            2. Tanjung Kelayang di Bangka Belitung
+                            3. Mandalika di Nusa Tenggara Barat...
                         </p>
                     </div>
                 </div>
@@ -59,9 +62,10 @@
                         <span> 4 juli 2023 </span>
                     </div>
                     <div class="">
-                        <h3 class="text-3xl font-bold">10 Rekomendasi wisata di Indonesia</h3>
+                        <h3 class="text-3xl font-bold">Jelajah Kuliner Jateng & Jogja</h3>
                         <p class="text-sm">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, repellat.
+                            Jawa Tengah dan Yogyakarta harus segera masuk dalam daftar destinasi wisata kuliner terbaik
+                            versimu, Sob! Kekayaan budaya menyatu dalam sajian kuliner khasnya. Citarasa yang ti..
                         </p>
                     </div>
                 </div>
@@ -74,9 +78,26 @@
                         <span> 4 juli 2023 </span>
                     </div>
                     <div class="">
-                        <h3 class="text-3xl font-bold">10 Rekomendasi wisata di Indonesia</h3>
+                        <h3 class="text-3xl font-bold">Pakaian Adat: Arti, Contoh, dan Fungsinya</h3>
                         <p class="text-sm">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, repellat.
+                            Pakaian ini juga digunakan untuk memperingati perayaan hari besar, menunjukkan atau menentukan
+                            pera..
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col flex-shrink-0 w-full gap-4 p-4 bg-white shadow-xl card rounded-3xl">
+                <img class="object-cover w-full h-48 rounded-3xl" src="{{ 'artikel1.png' }}" alt="">
+                <div class="flex flex-col gap-3">
+                    <div class="flex items-center gap-2 text-sm">
+                        <img src="{{ asset('date.svg') }}" alt="">
+                        <span> 4 juli 2023 </span>
+                    </div>
+                    <div class="">
+                        <h3 class="text-3xl font-bold">Filosofi Tari Pendet Berdasarkan Sejarah Budaya Bali!</h3>
+                        <p class="text-sm">
+                            Tarian ini konon untuk menyambut turunnya para dewa ke bumi. Tari Pendet merupakan hasil karya
+                            seorang master...
                         </p>
                     </div>
                 </div>
