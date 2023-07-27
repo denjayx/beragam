@@ -1,7 +1,7 @@
 @include('partials.head')
-<nav class="fixed top-0 left-0 z-20 w-full bg-transparent" id="navbar">
-    <div class="flex flex-wrap items-center justify-between p-4">
-        <a href="" class="flex items-center gap-4">
+<nav class="fixed top-0 left-0 z-20 w-full bg-black/40" id="navbar">
+    <div class="flex flex-wrap items-center justify-between px-4 py-2">
+        <a href="/" class="flex items-center gap-4">
             <img class="w-20" src="{{ asset('logo-white.png') }}" alt="beragam logo">
             <img class="w-20" src="{{ asset('logo-bbi.png') }}" alt="bangg logo">
         </a>
@@ -19,21 +19,21 @@
             <ul
                 class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg md:p-0 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent ">
                 <li>
-                    <a href=""
-                        class="block py-2 pl-3 pr-4 text-white bg-green-400 rounded md:bg-transparent md:text-yellow-300 "
+                    <a href="/"
+                        class=" {{ request()->is('/') ? 'bg-green-400 text-white md:text-yellow-300' : '' }} md:hover:underline block py-2 pl-3 pr-4 text-gray-600 md:text-white rounded md:bg-transparent  "
                         aria-current="page">Beranda</a>
                 </li>
                 <li>
-                    <a href="#"
-                        class="block py-2 pl-3 pr-4 text-gray-600 rounded md:text-white hover:text-green-700">Provinsi</a>
+                    <a href="{{ route('province.index') }}"
+                        class="{{ request()->is('provinsi') ? 'bg-green-400 text-white md:text-yellow-300' : '' }} md:hover:underline block py-2 pl-3 pr-4 md:bg-transparent text-gray-600 rounded md:text-white">Provinsi</a>
                 </li>
                 <li>
                     <a href="#"
-                        class="block py-2 pl-3 pr-4 text-gray-600 rounded md:text-white hover:text-green-700">Artikel</a>
+                        class="block py-2 pl-3 pr-4 text-gray-600 rounded md:text-white md:hover:underline">Artikel</a>
                 </li>
                 <li>
                     <a href="#"
-                        class="block py-2 pl-3 pr-4 text-gray-600 rounded md:text-white hover:text-green-700">Galeri</a>
+                        class="block py-2 pl-3 pr-4 text-gray-600 rounded md:text-white md:hover:underline">Galeri</a>
                 </li>
             </ul>
         </div>
