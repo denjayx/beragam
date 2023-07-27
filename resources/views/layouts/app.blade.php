@@ -3,13 +3,12 @@
 
 <head>
     @include('partials.head')
+    <title>Beragam | @yield('title')</title>
 </head>
 
-<body>
+<body class="bg-gradient-to-tr from-[#80B8D0] via-[#DFEEED] to-[#C5E3CA]">
     @include('partials.navbar')
-    <main class="container px-4 mx-auto">
-        @yield('content')
-    </main>
+    @yield('content')
     @include('partials.footer')
 </body>
 
